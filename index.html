@@ -894,6 +894,8 @@
                         <input type="hidden" name="access_key" value="164e8549-573b-450e-b2ed-73606743a591" />
                         <input type="hidden" name="subject" value="New Contact Form Submission - Automation for Back Offices" />
                         <input type="hidden" name="from_name" value="Automation for Back Offices Website" />
+                        <!-- Honeypot field for spam protection -->
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" placeholder="Your name" required>
@@ -968,12 +970,31 @@
         });
 
         // Form submission handler - Updated for Web3Forms
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            // Let the form submit naturally to Web3Forms
-            // Show a thank you message after a brief delay
-            setTimeout(() => {
-                alert('Thank you for your message! We will contact you within 24 hours.');
-            }, 100);
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            const formData = new FormData(form);
+            
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    alert('Thank you for your message! We will contact you within 24 hours.');
+                    form.reset();
+                } else {
+                    console.log('Error', data);
+                    alert('There was an error sending your message. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('There was an error sending your message. Please try again.');
+            }
         });
 
         // Intersection Observer for animations
