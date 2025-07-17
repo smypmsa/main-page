@@ -890,7 +890,10 @@
             <div class="contact-grid">
                 <div class="contact-form">
                     <h3>Tell Us About Your Process</h3>
-                    <form id="contactForm">
+                    <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="164e8549-573b-450e-b2ed-73606743a591" />
+                        <input type="hidden" name="subject" value="New Contact Form Submission - Automation for Back Offices" />
+                        <input type="hidden" name="from_name" value="Automation for Back Offices Website" />
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" placeholder="Your name" required>
@@ -964,11 +967,13 @@
             });
         });
 
-        // Form submission handler
+        // Form submission handler - Updated for Web3Forms
         document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! We will contact you within 24 hours.');
-            this.reset();
+            // Let the form submit naturally to Web3Forms
+            // Show a thank you message after a brief delay
+            setTimeout(() => {
+                alert('Thank you for your message! We will contact you within 24 hours.');
+            }, 100);
         });
 
         // Intersection Observer for animations
