@@ -12,25 +12,109 @@
         }
 
         :root {
-            /* Pantone Professional Color Palette */
-            --primary-navy: #1B263B;        /* Pantone 539 C */
-            --primary-blue: #415A77;        /* Pantone 5405 C */
-            --accent-blue: #778DA9;         /* Pantone 5415 C */
-            --light-blue: #E0E1DD;          /* Pantone Cool Gray 1 C */
+            /* Enhanced Professional Color Palette */
+            --primary-navy: #0F1419;        /* Deeper navy for more contrast */
+            --primary-blue: #2C5282;        /* Richer blue */
+            --accent-blue: #4A90E2;         /* Vibrant professional blue */
+            --light-blue: #E8F4FD;          /* Softer light blue */
             --white: #FFFFFF;
-            --dark-gray: #2D3436;           /* Pantone 426 C */
-            --medium-gray: #636E72;         /* Pantone 431 C */
-            --light-gray: #DDD6D5;          /* Pantone Warm Gray 2 C */
-            --success: #00B894;             /* Pantone 3268 C */
-            --warning: #FDCB6E;             /* Pantone 1355 C */
+            --dark-gray: #1A202C;           /* Warmer dark gray */
+            --medium-gray: #718096;         /* Balanced gray */
+            --light-gray: #F7FAFC;          /* Clean light gray */
+            --success: #38A169;             /* Professional green */
+            --warning: #D69E2E;             /* Warm gold */
+            --purple-accent: #805AD5;       /* Subtle purple for variety */
+            --teal-accent: #319795;         /* Professional teal */
         }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-blue) 100%);
+            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-blue) 50%, var(--accent-blue) 100%);
             color: var(--light-blue);
             line-height: 1.6;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background Elements */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .floating-shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-shape:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, var(--purple-accent), transparent);
+            border-radius: 50%;
+            animation-delay: 0s;
+        }
+
+        .floating-shape:nth-child(2) {
+            top: 60%;
+            right: 15%;
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--teal-accent), transparent);
+            border-radius: 20px;
+            animation-delay: 2s;
+        }
+
+        .floating-shape:nth-child(3) {
+            bottom: 30%;
+            left: 20%;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(90deg, var(--accent-blue), transparent);
+            border-radius: 30px;
+            animation-delay: 4s;
+        }
+
+        .floating-shape:nth-child(4) {
+            top: 40%;
+            right: 40%;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(180deg, var(--success), transparent);
+            border-radius: 50%;
+            animation-delay: 1s;
+        }
+
+        .circuit-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(90deg, rgba(74, 144, 226, 0.08) 1px, transparent 1px),
+                linear-gradient(rgba(74, 144, 226, 0.08) 1px, transparent 1px);
+            background-size: 100px 100px;
+            animation: circuitMove 20s linear infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        @keyframes circuitMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, 100px); }
         }
 
         .container {
@@ -44,11 +128,11 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(27, 38, 59, 0.95);
+            background: rgba(15, 20, 25, 0.95);
             backdrop-filter: blur(20px);
             z-index: 1000;
             padding: 1rem 0;
-            border-bottom: 1px solid rgba(119, 141, 169, 0.1);
+            border-bottom: 1px solid rgba(74, 144, 226, 0.15);
         }
 
         nav {
@@ -99,7 +183,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 30% 40%, rgba(119, 141, 169, 0.1) 0%, transparent 50%);
+            background: radial-gradient(circle at 30% 40%, rgba(74, 144, 226, 0.15) 0%, transparent 50%);
             pointer-events: none;
         }
 
@@ -137,7 +221,7 @@
         }
 
         .cta-button {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--purple-accent) 100%);
             color: var(--white);
             padding: 1.25rem 2.5rem;
             border: none;
@@ -150,12 +234,12 @@
             display: inline-block;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(65, 90, 119, 0.3);
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
         }
 
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(65, 90, 119, 0.4);
+            box-shadow: 0 8px 25px rgba(74, 144, 226, 0.4);
         }
 
         /* Section Styles */
@@ -178,18 +262,19 @@
         .section-subtitle {
             text-align: center;
             font-size: 1.125rem;
-            color: var(--accent-blue);
+            color: var(--white);
             margin-bottom: 4rem;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            font-weight: 500;
         }
 
         /* Services Section */
         .services {
-            background: rgba(27, 38, 59, 0.3);
-            border-top: 1px solid rgba(119, 141, 169, 0.1);
-            border-bottom: 1px solid rgba(119, 141, 169, 0.1);
+            background: rgba(15, 20, 25, 0.4);
+            border-top: 1px solid rgba(74, 144, 226, 0.15);
+            border-bottom: 1px solid rgba(74, 144, 226, 0.15);
         }
 
         .services-grid {
@@ -200,25 +285,44 @@
         }
 
         .service-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(119, 141, 169, 0.15);
-            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(74, 144, 226, 0.2);
+            border-radius: 12px;
             padding: 2.5rem;
             backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
         }
 
         .service-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(119, 141, 169, 0.3);
-            box-shadow: 0 15px 40px rgba(27, 38, 59, 0.3);
+            transform: translateY(-12px) rotateX(5deg);
+            border-color: rgba(74, 144, 226, 0.4);
+            box-shadow: 0 20px 50px rgba(15, 20, 25, 0.5);
+            background: rgba(255, 255, 255, 0.12);
         }
 
         .service-icon {
             width: 64px;
             height: 64px;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--teal-accent) 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -226,6 +330,31 @@
             margin: 0 auto 1.5rem;
             font-size: 1.5rem;
             color: var(--white);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--purple-accent) 0%, var(--success) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 8px 25px rgba(74, 144, 226, 0.4);
+        }
+
+        .service-card:hover .service-icon::before {
+            opacity: 1;
         }
 
         .service-card h3 {
@@ -233,11 +362,31 @@
             margin-bottom: 1rem;
             color: var(--white);
             font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover h3 {
+            color: var(--white);
+            transform: translateY(-2px);
         }
 
         .service-card p {
             color: var(--light-blue);
             line-height: 1.7;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover p {
+            color: var(--white);
+        }
+
+        .service-visual img {
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-visual img {
+            opacity: 1 !important;
+            transform: scale(1.05);
         }
 
         /* Case Studies */
@@ -249,9 +398,9 @@
         }
 
         .case-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(119, 141, 169, 0.15);
-            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(74, 144, 226, 0.2);
+            border-radius: 12px;
             padding: 2.5rem;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
@@ -259,8 +408,8 @@
 
         .case-card:hover {
             transform: translateY(-8px);
-            border-color: rgba(119, 141, 169, 0.3);
-            box-shadow: 0 15px 40px rgba(27, 38, 59, 0.3);
+            border-color: rgba(74, 144, 226, 0.4);
+            box-shadow: 0 15px 40px rgba(15, 20, 25, 0.4);
         }
 
         .case-tag {
@@ -302,11 +451,20 @@
             color: var(--accent-blue);
         }
 
+        .case-visual img {
+            transition: all 0.3s ease;
+        }
+
+        .case-card:hover .case-visual img {
+            opacity: 1 !important;
+            transform: scale(1.05);
+        }
+
         /* About Section */
         .about {
-            background: rgba(27, 38, 59, 0.3);
-            border-top: 1px solid rgba(119, 141, 169, 0.1);
-            border-bottom: 1px solid rgba(119, 141, 169, 0.1);
+            background: rgba(15, 20, 25, 0.4);
+            border-top: 1px solid rgba(74, 144, 226, 0.15);
+            border-bottom: 1px solid rgba(74, 144, 226, 0.15);
         }
 
         .team-intro {
@@ -329,9 +487,9 @@
 
         .team-member {
             text-align: center;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(119, 141, 169, 0.15);
-            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(74, 144, 226, 0.2);
+            border-radius: 12px;
             padding: 3rem 2rem;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
@@ -339,7 +497,7 @@
 
         .team-member:hover {
             transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(27, 38, 59, 0.3);
+            box-shadow: 0 15px 40px rgba(15, 20, 25, 0.4);
         }
 
         .team-member img {
@@ -348,6 +506,12 @@
             border-radius: 50%;
             margin-bottom: 1.5rem;
             border: 3px solid var(--accent-blue);
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover img {
+            transform: scale(1.05);
+            border-color: var(--purple-accent);
         }
 
         .team-member h3 {
@@ -394,9 +558,9 @@
         }
 
         .contact-form {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(119, 141, 169, 0.15);
-            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(74, 144, 226, 0.2);
+            border-radius: 12px;
             padding: 3rem;
             backdrop-filter: blur(10px);
         }
@@ -424,9 +588,9 @@
         .form-group textarea {
             width: 100%;
             padding: 1rem;
-            border: 1px solid rgba(119, 141, 169, 0.3);
+            border: 1px solid rgba(74, 144, 226, 0.3);
             border-radius: 6px;
-            background: rgba(27, 38, 59, 0.5);
+            background: rgba(15, 20, 25, 0.6);
             color: var(--white);
             font-size: 1rem;
             transition: border-color 0.3s ease;
@@ -436,7 +600,7 @@
         .form-group textarea:focus {
             outline: none;
             border-color: var(--accent-blue);
-            box-shadow: 0 0 0 3px rgba(119, 141, 169, 0.1);
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15);
         }
 
         .form-group input::placeholder,
@@ -445,9 +609,9 @@
         }
 
         .contact-info {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(119, 141, 169, 0.15);
-            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(74, 144, 226, 0.2);
+            border-radius: 12px;
             padding: 3rem;
             backdrop-filter: blur(10px);
         }
@@ -464,12 +628,12 @@
         }
 
         .contact-item h4 {
-            color: var(--accent-blue);
+            color: var(--white);
             margin-bottom: 0.75rem;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-size: 0.85rem;
+            font-size: 1rem;
         }
 
         .contact-item p {
@@ -498,10 +662,10 @@
 
         /* Footer */
         footer {
-            background: rgba(27, 38, 59, 0.8);
+            background: rgba(15, 20, 25, 0.8);
             padding: 3rem 0;
             text-align: center;
-            border-top: 1px solid rgba(119, 141, 169, 0.1);
+            border-top: 1px solid rgba(74, 144, 226, 0.15);
             margin-top: 6rem;
         }
 
@@ -549,6 +713,14 @@
     </style>
 </head>
 <body>
+    <div class="bg-animation">
+        <div class="circuit-lines"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+    </div>
+
     <header>
         <nav class="container">
             <div class="logo">Intelligent Automation</div>
@@ -566,7 +738,7 @@
             <div class="hero-content">
                 <div class="hero-subtitle">Built by Practitioners</div>
                 <h1>We Build Automation That Works</h1>
-                <p>We've dealt with the same manual processes you have. Now we build practical automation solutions that actually get used. No fluff, just working solutions</p>
+                <p>We've dealt with the same manual processes you have. Now we build practical automation solutions that actually get used. No fluff, just working solutions.</p>
                 <a href="#contact" class="cta-button">Get Started</a>
             </div>
         </div>
@@ -581,21 +753,33 @@
                     <div class="service-icon">📞</div>
                     <h3>Free Process Review</h3>
                     <p>We'll look at your current process and show you exactly what can be automated. No sales pitch, just honest assessment.</p>
+                    <div class="service-visual">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop&crop=center" alt="Process analysis illustration" style="width: 100%; height: 120px; object-fit: cover; border-radius: 8px; margin-top: 1rem; opacity: 0.8;">
+                    </div>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">⚡</div>
                     <h3>Live Automation Build</h3>
                     <p>We build your automation during the call. You see the solution working in real-time and walk away with functioning code.</p>
+                    <div class="service-visual">
+                        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=200&fit=crop&crop=center" alt="Live coding session" style="width: 100%; height: 120px; object-fit: cover; border-radius: 8px; margin-top: 1rem; opacity: 0.8;">
+                    </div>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">⚙️</div>
                     <h3>Custom Process Automation</h3>
                     <p>We build automation for your specific needs. Finance, HR, operations - we focus on what saves you the most time.</p>
+                    <div class="service-visual">
+                        <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=400&h=200&fit=crop&crop=center" alt="Custom automation dashboard" style="width: 100%; height: 120px; object-fit: cover; border-radius: 8px; margin-top: 1rem; opacity: 0.8;">
+                    </div>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">🎯</div>
                     <h3>Team Training</h3>
                     <p>We show your team how to maintain and extend the automation. No vendor lock-in, you own the solution.</p>
+                    <div class="service-visual">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=200&fit=crop&crop=center" alt="Team training session" style="width: 100%; height: 120px; object-fit: cover; border-radius: 8px; margin-top: 1rem; opacity: 0.8;">
+                    </div>
                 </div>
             </div>
         </div>
@@ -609,19 +793,28 @@
                 <div class="case-card">
                     <span class="case-tag">Document Processing</span>
                     <h3>PDF to Excel Converter</h3>
-                    <p>Turns scanned invoices and documents into Excel tables. Handles messy PDFs that come from different vendors. Saves 8 hours per week for accounts payable.</p>
+                    <p>Turns documents into Excel tables. Handles messy PDFs that come from different vendors.</p>
+                    <div class="case-visual">
+                        <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=400&h=180&fit=crop&crop=center" alt="PDF document processing" style="width: 100%; height: 140px; object-fit: cover; border-radius: 8px; margin: 1rem 0; opacity: 0.8;">
+                    </div>
                     <a href="https://colab.research.google.com/github/smypmsa/pdf-to-table/blob/main/OCR_ed_PDF_to_Excel.ipynb" class="case-link" target="_blank">See the Code</a>
                 </div>
                 <div class="case-card">
                     <span class="case-tag">Search & Retrieval</span>
-                    <h3>Document Search Engine</h3>
+                    <h3>PDF Search Engine</h3>
                     <p>Makes scanned documents searchable. Finance team can now find contracts and invoices in seconds instead of digging through file cabinets.</p>
+                    <div class="case-visual">
+                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&h=180&fit=crop&crop=center" alt="Document search interface" style="width: 100%; height: 140px; object-fit: cover; border-radius: 8px; margin: 1rem 0; opacity: 0.8;">
+                    </div>
                     <a href="https://github.com/smypmsa/pdf-searcher" class="case-link" target="_blank">See the Code</a>
                 </div>
                 <div class="case-card">
                     <span class="case-tag">Data Extraction</span>
                     <h3>Smart Invoice Processing</h3>
                     <p>Pulls vendor info, amounts, and dates from invoices automatically. Works with different invoice formats without manual setup.</p>
+                    <div class="case-visual">
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=180&fit=crop&crop=center" alt="Invoice processing automation" style="width: 100%; height: 140px; object-fit: cover; border-radius: 8px; margin: 1rem 0; opacity: 0.8;">
+                    </div>
                     <a href="https://github.com/smypmsa/mistral-annot" class="case-link" target="_blank">See the Code</a>
                 </div>
             </div>
@@ -633,20 +826,20 @@
             <h2 class="section-title">Who We Are</h2>
             <p class="section-subtitle">We've been in your shoes</p>
             <p class="team-intro">
-                We're former corporate employees who got tired of doing the same manual tasks over and over. We built automation to solve our own problems, then realized others had the same issues. Now we build practical solutions for businesses like yours.
+                We got tired of doing the same manual tasks over and over, and got tired of seeing our colleagues struggle with the same issues. We built automation to solve our own problems, then realized others had the same challenges. Now we build practical solutions for businesses like yours.
             </p>
             <div class="team-grid">
                 <div class="team-member">
-                    <img src="https://via.placeholder.com/120x120/415A77/FFFFFF?text=AS" alt="Anton Sauchyk">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=240&h=240&fit=crop&crop=face" alt="Anton Sauchyk">
                     <h3>Anton Sauchyk</h3>
                     <p class="role">Automation Engineer</p>
                     <p class="description">Built automation tools for back-office operations in multiple companies. Focuses on making technology work for people, not the other way around.</p>
                     <a href="https://www.linkedin.com/in/anton-sauchyk/" class="linkedin-link" target="_blank">LinkedIn Profile</a>
                 </div>
                 <div class="team-member">
-                    <img src="https://via.placeholder.com/120x120/415A77/FFFFFF?text=SS" alt="Stepan Suprun">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=240&h=240&fit=crop&crop=face" alt="Stepan Suprun">
                     <h3>Stepan Suprun</h3>
-                    <p class="role">Automation consultant</p>
+                    <p class="role">Automation Consultant</p>
                     <p class="description">Finance manager who automated his own department's processes. Knows firsthand which automations work and which don't.</p>
                     <a href="https://www.linkedin.com/in/stepansuprun/" class="linkedin-link" target="_blank">LinkedIn Profile</a>
                 </div>
@@ -752,9 +945,9 @@
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
-                header.style.background = 'rgba(27, 38, 59, 0.98)';
+                header.style.background = 'rgba(15, 20, 25, 0.98)';
             } else {
-                header.style.background = 'rgba(27, 38, 59, 0.95)';
+                header.style.background = 'rgba(15, 20, 25, 0.95)';
             }
         });
 
