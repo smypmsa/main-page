@@ -29,7 +29,9 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0F1419 0%, #2C5282 50%, #4A90E2 100%);
             background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-blue) 50%, var(--accent-blue) 100%);
+            color: #E8F4FD;
             color: var(--light-blue);
             line-height: 1.6;
             overflow-x: hidden;
@@ -59,6 +61,7 @@
             left: 10%;
             width: 80px;
             height: 80px;
+            background: linear-gradient(45deg, #805AD5, transparent);
             background: linear-gradient(45deg, var(--purple-accent), transparent);
             border-radius: 50%;
             animation-delay: 0s;
@@ -69,6 +72,7 @@
             right: 15%;
             width: 120px;
             height: 120px;
+            background: linear-gradient(135deg, #319795, transparent);
             background: linear-gradient(135deg, var(--teal-accent), transparent);
             border-radius: 20px;
             animation-delay: 2s;
@@ -79,6 +83,7 @@
             left: 20%;
             width: 60px;
             height: 60px;
+            background: linear-gradient(90deg, #4A90E2, transparent);
             background: linear-gradient(90deg, var(--accent-blue), transparent);
             border-radius: 30px;
             animation-delay: 4s;
@@ -89,6 +94,7 @@
             right: 40%;
             width: 100px;
             height: 100px;
+            background: linear-gradient(180deg, #38A169, transparent);
             background: linear-gradient(180deg, var(--success), transparent);
             border-radius: 50%;
             animation-delay: 1s;
@@ -130,6 +136,7 @@
             width: 100%;
             background: rgba(15, 20, 25, 0.95);
             backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             z-index: 1000;
             padding: 1rem 0;
             border-bottom: 1px solid rgba(74, 144, 226, 0.15);
@@ -144,6 +151,7 @@
         .logo {
             font-size: 1.75rem;
             font-weight: 700;
+            color: #FFFFFF;
             color: var(--white);
             letter-spacing: -0.5px;
         }
@@ -155,6 +163,7 @@
         }
 
         .nav-links a {
+            color: #E8F4FD;
             color: var(--light-blue);
             text-decoration: none;
             font-weight: 500;
@@ -163,6 +172,7 @@
         }
 
         .nav-links a:hover {
+            color: #FFFFFF;
             color: var(--white);
         }
 
@@ -196,6 +206,7 @@
             font-size: 3.75rem;
             font-weight: 800;
             margin-bottom: 1.5rem;
+            color: #FFFFFF;
             color: var(--white);
             line-height: 1.1;
             letter-spacing: -1px;
@@ -203,6 +214,7 @@
 
         .hero-subtitle {
             font-size: 1.125rem;
+            color: #4A90E2;
             color: var(--accent-blue);
             font-weight: 600;
             margin-bottom: 0.5rem;
@@ -213,6 +225,7 @@
         .hero-content p {
             font-size: 1.25rem;
             margin-bottom: 3rem;
+            color: #E8F4FD;
             color: var(--light-blue);
             max-width: 650px;
             margin-left: auto;
@@ -221,7 +234,9 @@
         }
 
         .cta-button {
+            background: linear-gradient(135deg, #4A90E2 0%, #805AD5 100%);
             background: linear-gradient(135deg, var(--accent-blue) 0%, var(--purple-accent) 100%);
+            color: #FFFFFF;
             color: var(--white);
             padding: 1.25rem 2.5rem;
             border: none;
@@ -255,6 +270,7 @@
             font-weight: 700;
             text-align: center;
             margin-bottom: 1rem;
+            color: #FFFFFF;
             color: var(--white);
             letter-spacing: -0.5px;
         }
@@ -262,6 +278,7 @@
         .section-subtitle {
             text-align: center;
             font-size: 1.125rem;
+            color: #FFFFFF;
             color: var(--white);
             margin-bottom: 4rem;
             max-width: 600px;
@@ -290,6 +307,7 @@
             border-radius: 12px;
             padding: 2.5rem;
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             text-align: center;
             position: relative;
@@ -325,6 +343,7 @@
         .service-icon {
             width: 64px;
             height: 64px;
+            background: linear-gradient(135deg, #4A90E2 0%, #319795 100%);
             background: linear-gradient(135deg, var(--accent-blue) 0%, var(--teal-accent) 100%);
             border-radius: 50%;
             display: flex;
@@ -332,6 +351,7 @@
             justify-content: center;
             margin: 0 auto 1.5rem;
             font-size: 1.5rem;
+            color: #FFFFFF;
             color: var(--white);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
@@ -345,6 +365,7 @@
             left: 0;
             width: 100%;
             height: 100%;
+            background: linear-gradient(135deg, #805AD5 0%, #38A169 100%);
             background: linear-gradient(135deg, var(--purple-accent) 0%, var(--success) 100%);
             opacity: 0;
             transition: opacity 0.4s ease;
@@ -363,17 +384,20 @@
         .service-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
+            color: #FFFFFF;
             color: var(--white);
             font-weight: 600;
             transition: all 0.3s ease;
         }
 
         .service-card:hover h3 {
+            color: #FFFFFF;
             color: var(--white);
             transform: translateY(-2px);
         }
 
         .service-card p {
+            color: #E8F4FD;
             color: var(--light-blue);
             line-height: 1.7;
             transition: all 0.3s ease;
@@ -382,6 +406,7 @@
         }
 
         .service-card:hover p {
+            color: #FFFFFF;
             color: var(--white);
         }
 
@@ -417,6 +442,7 @@
             border-radius: 12px;
             padding: 2.5rem;
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
@@ -430,7 +456,9 @@
         }
 
         .case-tag {
+            background: #38A169;
             background: var(--success);
+            color: #FFFFFF;
             color: var(--white);
             padding: 0.25rem 0.75rem;
             border-radius: 20px;
@@ -446,11 +474,13 @@
         .case-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
+            color: #FFFFFF;
             color: var(--white);
             font-weight: 600;
         }
 
         .case-card p {
+            color: #E8F4FD;
             color: var(--light-blue);
             margin-bottom: 1.5rem;
             line-height: 1.7;
@@ -476,10 +506,12 @@
         }
 
         .case-link {
+            color: #FFFFFF;
             color: var(--white);
             text-decoration: none;
             font-weight: 600;
             transition: color 0.3s ease;
+            border-bottom: 2px solid #4A90E2;
             border-bottom: 2px solid var(--accent-blue);
             padding-bottom: 2px;
             margin-top: auto;
@@ -487,6 +519,7 @@
         }
 
         .case-link:hover {
+            color: #4A90E2;
             color: var(--accent-blue);
         }
 
@@ -500,6 +533,7 @@
         .team-intro {
             text-align: center;
             font-size: 1.125rem;
+            color: #E8F4FD;
             color: var(--light-blue);
             margin-bottom: 4rem;
             max-width: 800px;
@@ -522,6 +556,7 @@
             border-radius: 12px;
             padding: 3rem 2rem;
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
@@ -538,23 +573,27 @@
             height: 120px;
             border-radius: 50%;
             margin: 0 auto 1.5rem;
+            border: 3px solid #4A90E2;
             border: 3px solid var(--accent-blue);
             transition: all 0.3s ease;
         }
 
         .team-member:hover img {
             transform: scale(1.05);
+            border-color: #805AD5;
             border-color: var(--purple-accent);
         }
 
         .team-member h3 {
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
+            color: #FFFFFF;
             color: var(--white);
             font-weight: 600;
         }
 
         .team-member .role {
+            color: #4A90E2;
             color: var(--accent-blue);
             font-weight: 600;
             margin-bottom: 1rem;
@@ -564,6 +603,7 @@
         }
 
         .team-member .description {
+            color: #E8F4FD;
             color: var(--light-blue);
             margin-bottom: 1.5rem;
             line-height: 1.7;
@@ -571,10 +611,12 @@
         }
 
         .linkedin-link {
+            color: #FFFFFF;
             color: var(--white);
             text-decoration: none;
             font-weight: 600;
             transition: color 0.3s ease;
+            border-bottom: 2px solid #4A90E2;
             border-bottom: 2px solid var(--accent-blue);
             padding-bottom: 2px;
             margin-top: auto;
@@ -582,6 +624,7 @@
         }
 
         .linkedin-link:hover {
+            color: #4A90E2;
             color: var(--accent-blue);
         }
 
@@ -599,11 +642,13 @@
             border-radius: 12px;
             padding: 3rem;
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         .contact-form h3 {
             font-size: 1.75rem;
             margin-bottom: 2rem;
+            color: #FFFFFF;
             color: var(--white);
             font-weight: 600;
         }
@@ -615,6 +660,7 @@
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
+            color: #FFFFFF;
             color: var(--white);
             font-weight: 500;
             font-size: 0.95rem;
@@ -627,6 +673,7 @@
             border: 1px solid rgba(74, 144, 226, 0.3);
             border-radius: 6px;
             background: rgba(15, 20, 25, 0.6);
+            color: #FFFFFF;
             color: var(--white);
             font-size: 1rem;
             transition: border-color 0.3s ease;
@@ -635,12 +682,14 @@
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
+            border-color: #4A90E2;
             border-color: var(--accent-blue);
             box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15);
         }
 
         .form-group input::placeholder,
         .form-group textarea::placeholder {
+            color: #4A90E2;
             color: var(--accent-blue);
         }
 
@@ -650,11 +699,13 @@
             border-radius: 12px;
             padding: 3rem;
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         .contact-info h3 {
             font-size: 1.75rem;
             margin-bottom: 2rem;
+            color: #FFFFFF;
             color: var(--white);
             font-weight: 600;
         }
@@ -664,6 +715,7 @@
         }
 
         .contact-item h4 {
+            color: #FFFFFF;
             color: var(--white);
             margin-bottom: 0.75rem;
             font-weight: 700;
@@ -673,6 +725,7 @@
         }
 
         .contact-item p {
+            color: #E8F4FD;
             color: var(--light-blue);
             line-height: 1.7;
         }
@@ -684,15 +737,18 @@
         }
 
         .social-links a {
+            color: #FFFFFF;
             color: var(--white);
             text-decoration: none;
             font-weight: 600;
             transition: color 0.3s ease;
+            border-bottom: 2px solid #4A90E2;
             border-bottom: 2px solid var(--accent-blue);
             padding-bottom: 2px;
         }
 
         .social-links a:hover {
+            color: #4A90E2;
             color: var(--accent-blue);
         }
 
@@ -706,6 +762,7 @@
         }
 
         footer p {
+            color: #4A90E2;
             color: var(--accent-blue);
             font-size: 0.9rem;
         }
@@ -715,6 +772,21 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+
+        /* Mobile-specific fallbacks for backdrop-filter */
+        @supports not (backdrop-filter: blur(10px)) {
+            header {
+                background: rgba(15, 20, 25, 0.98);
+            }
+            
+            .service-card,
+            .case-card,
+            .team-member,
+            .contact-form,
+            .contact-info {
+                background: rgba(255, 255, 255, 0.15);
             }
         }
 
@@ -744,6 +816,17 @@
             .contact-form,
             .contact-info {
                 padding: 2rem;
+            }
+            
+            /* Enhanced mobile fallbacks */
+            .service-card:hover,
+            .case-card:hover,
+            .team-member:hover {
+                transform: none;
+            }
+            
+            .service-card:hover .service-icon {
+                transform: scale(1.05);
             }
         }
     </style>
@@ -902,7 +985,7 @@
                     <img src="https://i.ibb.co/HpKTpcLd/portrait.jpg?w=240&h=240&fit=crop&crop=face" alt="Stepan Suprun">
                     <h3>Stepan Suprun</h3>
                     <p class="role">Automation Consultant</p>
-                    <p class="description">Finance manager who optimized and automated processes across the company. Knows firsthand which automations drive real impact — and which don’t.</p>
+                    <p class="description">Finance manager who optimized and automated processes across the company. Knows firsthand which automations drive real impact — and which don't.</p>
                     <a href="https://www.linkedin.com/in/stepansuprun/" class="linkedin-link" target="_blank">LinkedIn Profile</a>
                 </div>
             </div>
