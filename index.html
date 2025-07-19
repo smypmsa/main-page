@@ -2,22 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0f1419">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Automation for Back Offices</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, rgb(15, 20, 25) 0%, rgb(45, 35, 65) 50%, rgb(85, 60, 130) 100%);
-            color: rgb(232, 244, 253);
+            /* Solid fallback first, then gradient */
+            background-color: #0f1419;
+            background-image: -webkit-gradient(linear, left top, right bottom, from(#0f1419), color-stop(50%, #2d2341), to(#553c82));
+            background-image: -webkit-linear-gradient(315deg, #0f1419 0%, #2d2341 50%, #553c82 100%);
+            background-image: linear-gradient(135deg, #0f1419 0%, #2d2341 50%, #553c82 100%);
+            background-attachment: fixed;
+            color: #e8f4fd;
             line-height: 1.6;
             overflow-x: hidden;
             position: relative;
+            min-height: 100vh;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* iOS-specific background fix */
+        @supports (-webkit-touch-callout: none) {
+            body {
+                background: #0f1419;
+            }
+            
+            body::before {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: -webkit-linear-gradient(315deg, #0f1419 0%, #2d2341 50%, #553c82 100%);
+                background: linear-gradient(135deg, #0f1419 0%, #2d2341 50%, #553c82 100%);
+                z-index: -2;
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+            }
         }
 
         /* Animated Background Elements */
@@ -35,7 +70,9 @@
         .floating-shape {
             position: absolute;
             opacity: 0.1;
+            -webkit-animation: float 6s ease-in-out infinite;
             animation: float 6s ease-in-out infinite;
+            will-change: transform;
         }
 
         .floating-shape:nth-child(1) {
@@ -43,8 +80,11 @@
             left: 10%;
             width: 80px;
             height: 80px;
-            background: linear-gradient(45deg, rgb(128, 90, 213), transparent);
+            background: #805ad5;
+            background: -webkit-linear-gradient(45deg, #805ad5, transparent);
+            background: linear-gradient(45deg, #805ad5, transparent);
             border-radius: 50%;
+            -webkit-animation-delay: 0s;
             animation-delay: 0s;
         }
 
@@ -53,8 +93,11 @@
             right: 15%;
             width: 120px;
             height: 120px;
-            background: linear-gradient(135deg, rgb(130, 80, 120), transparent);
+            background: #825078;
+            background: -webkit-linear-gradient(135deg, #825078, transparent);
+            background: linear-gradient(135deg, #825078, transparent);
             border-radius: 20px;
+            -webkit-animation-delay: 2s;
             animation-delay: 2s;
         }
 
@@ -63,8 +106,11 @@
             left: 20%;
             width: 60px;
             height: 60px;
-            background: linear-gradient(90deg, rgb(110, 70, 140), transparent);
+            background: #6e468c;
+            background: -webkit-linear-gradient(90deg, #6e468c, transparent);
+            background: linear-gradient(90deg, #6e468c, transparent);
             border-radius: 30px;
+            -webkit-animation-delay: 4s;
             animation-delay: 4s;
         }
 
@@ -73,8 +119,11 @@
             right: 40%;
             width: 100px;
             height: 100px;
-            background: linear-gradient(180deg, rgb(56, 161, 105), transparent);
+            background: #38a169;
+            background: -webkit-linear-gradient(180deg, #38a169, transparent);
+            background: linear-gradient(180deg, #38a169, transparent);
             border-radius: 50%;
+            -webkit-animation-delay: 1s;
             animation-delay: 1s;
         }
 
@@ -85,15 +134,29 @@
             width: 100%;
             height: 100%;
             background-image: 
+                -webkit-linear-gradient(0deg, rgba(110, 70, 140, 0.08) 1px, transparent 1px),
+                -webkit-linear-gradient(90deg, rgba(110, 70, 140, 0.08) 1px, transparent 1px);
+            background-image: 
                 linear-gradient(90deg, rgba(110, 70, 140, 0.08) 1px, transparent 1px),
                 linear-gradient(rgba(110, 70, 140, 0.08) 1px, transparent 1px);
             background-size: 100px 100px;
+            -webkit-animation: circuitMove 20s linear infinite;
             animation: circuitMove 20s linear infinite;
+        }
+
+        @-webkit-keyframes float {
+            0%, 100% { -webkit-transform: translateY(0px) rotate(0deg); transform: translateY(0px) rotate(0deg); }
+            50% { -webkit-transform: translateY(-20px) rotate(180deg); transform: translateY(-20px) rotate(180deg); }
         }
 
         @keyframes float {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
             50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        @-webkit-keyframes circuitMove {
+            0% { -webkit-transform: translate(0, 0); transform: translate(0, 0); }
+            100% { -webkit-transform: translate(100px, 100px); transform: translate(100px, 100px); }
         }
 
         @keyframes circuitMove {
@@ -112,13 +175,20 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgb(15, 20, 25);
-            background: rgba(15, 20, 25, 0.95);
-            backdrop-filter: blur(20px);
+            background-color: #0f1419;
+            background-color: rgba(15, 20, 25, 0.95);
             -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
             z-index: 1000;
             padding: 1rem 0;
             border-bottom: 1px solid rgba(110, 70, 140, 0.15);
+        }
+
+        /* iOS backdrop-filter fix */
+        @supports (-webkit-backdrop-filter: blur(20px)) {
+            header {
+                -webkit-backdrop-filter: blur(20px);
+            }
         }
 
         nav {
@@ -130,7 +200,7 @@
         .logo {
             font-size: 1.75rem;
             font-weight: 700;
-            color: rgb(255, 255, 255);
+            color: #ffffff;
             letter-spacing: -0.5px;
         }
 
@@ -141,15 +211,16 @@
         }
 
         .nav-links a {
-            color: rgb(232, 244, 253);
+            color: #e8f4fd;
             text-decoration: none;
             font-weight: 500;
+            -webkit-transition: color 0.3s ease;
             transition: color 0.3s ease;
             font-size: 0.95rem;
         }
 
         .nav-links a:hover {
-            color: rgb(255, 255, 255);
+            color: #ffffff;
         }
 
         /* Hero Section */
@@ -182,14 +253,14 @@
             font-size: 3.75rem;
             font-weight: 800;
             margin-bottom: 1.5rem;
-            color: rgb(255, 255, 255);
+            color: #ffffff;
             line-height: 1.1;
             letter-spacing: -1px;
         }
 
         .hero-subtitle {
             font-size: 1.125rem;
-            color: rgb(74, 144, 226);
+            color: #4a90e2;
             font-weight: 600;
             margin-bottom: 0.5rem;
             text-transform: uppercase;
@@ -199,7 +270,7 @@
         .hero-content p {
             font-size: 1.25rem;
             margin-bottom: 3rem;
-            color: rgb(232, 244, 253);
+            color: #e8f4fd;
             max-width: 650px;
             margin-left: auto;
             margin-right: auto;
@@ -207,26 +278,29 @@
         }
 
         .cta-button {
-            background: linear-gradient(135deg, rgb(74, 144, 226) 0%, rgb(128, 90, 213) 100%);
-            color: rgb(255, 255, 255);
+            background: #4a90e2;
+            background: -webkit-linear-gradient(315deg, #4a90e2 0%, #805ad5 100%);
+            background: linear-gradient(135deg, #4a90e2 0%, #805ad5 100%);
+            color: #ffffff;
             padding: 1.25rem 2.5rem;
             border: none;
             border-radius: 6px;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
+            -webkit-transition: all 0.3s ease;
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgb(74, 144, 226);
             box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+            -webkit-appearance: none;
         }
 
         .cta-button:hover {
+            -webkit-transform: translateY(-2px);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgb(74, 144, 226);
             box-shadow: 0 8px 25px rgba(74, 144, 226, 0.4);
         }
 
@@ -234,7 +308,9 @@
         section {
             padding: 6rem 0;
             opacity: 0;
+            -webkit-transform: translateY(30px);
             transform: translateY(30px);
+            -webkit-animation: fadeInUp 0.8s ease forwards;
             animation: fadeInUp 0.8s ease forwards;
         }
 
@@ -243,14 +319,14 @@
             font-weight: 700;
             text-align: center;
             margin-bottom: 1rem;
-            color: rgb(255, 255, 255);
+            color: #ffffff;
             letter-spacing: -0.5px;
         }
 
         .section-subtitle {
             text-align: center;
             font-size: 1.125rem;
-            color: rgb(255, 255, 255);
+            color: #ffffff;
             margin-bottom: 4rem;
             max-width: 600px;
             margin-left: auto;
@@ -260,8 +336,7 @@
 
         /* Services Section */
         .services {
-            background: rgb(15, 20, 25);
-            background: rgba(15, 20, 25, 0.4);
+            background-color: rgba(15, 20, 25, 0.4);
             border-top: 1px solid rgba(110, 70, 140, 0.15);
             border-bottom: 1px solid rgba(110, 70, 140, 0.15);
         }
@@ -274,17 +349,18 @@
         }
 
         .service-card {
-            background: rgba(255, 255, 255, 0.05);
-            background: rgba(255, 255, 255, 0.08);
+            background-color: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(110, 70, 140, 0.2);
             border-radius: 12px;
             padding: 2.5rem;
-            backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            -webkit-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             text-align: center;
             position: relative;
             overflow: hidden;
+            -webkit-transform-style: preserve-3d;
             transform-style: preserve-3d;
             display: flex;
             flex-direction: column;
@@ -298,7 +374,9 @@
             left: -100%;
             width: 100%;
             height: 100%;
+            background: -webkit-linear-gradient(270deg, transparent, rgba(255, 255, 255, 0.1), transparent);
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            -webkit-transition: left 0.6s ease;
             transition: left 0.6s ease;
         }
 
@@ -307,24 +385,27 @@
         }
 
         .service-card:hover {
-            transform: translateY(-12px) rotateX(5deg);
+            -webkit-transform: translateY(-12px);
+            transform: translateY(-12px);
             border-color: rgba(110, 70, 140, 0.4);
             box-shadow: 0 20px 50px rgba(15, 20, 25, 0.5);
-            background: rgba(255, 255, 255, 0.08);
-            background: rgba(255, 255, 255, 0.12);
+            background-color: rgba(255, 255, 255, 0.12);
         }
 
         .service-icon {
             width: 64px;
             height: 64px;
-            background: linear-gradient(135deg, rgb(74, 144, 226) 0%, rgb(49, 151, 149) 100%);
+            background: #4a90e2;
+            background: -webkit-linear-gradient(315deg, #4a90e2 0%, #319795 100%);
+            background: linear-gradient(135deg, #4a90e2 0%, #319795 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.5rem;
             font-size: 1.5rem;
-            color: rgb(255, 255, 255);
+            color: #ffffff;
+            -webkit-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
@@ -337,15 +418,17 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgb(128, 90, 213) 0%, rgb(56, 161, 105) 100%);
+            background: -webkit-linear-gradient(315deg, #805ad5 0%, #38a169 100%);
+            background: linear-gradient(135deg, #805ad5 0%, #38a169 100%);
             opacity: 0;
+            -webkit-transition: opacity 0.4s ease;
             transition: opacity 0.4s ease;
             z-index: -1;
         }
 
         .service-card:hover .service-icon {
+            -webkit-transform: scale(1.1) rotate(10deg);
             transform: scale(1.1) rotate(10deg);
-            box-shadow: 0 8px 25px rgb(74, 144, 226);
             box-shadow: 0 8px 25px rgba(74, 144, 226, 0.4);
         }
 
@@ -356,26 +439,29 @@
         .service-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: rgb(255, 255, 255);
+            color: #ffffff;
             font-weight: 600;
+            -webkit-transition: all 0.3s ease;
             transition: all 0.3s ease;
         }
 
         .service-card:hover h3 {
-            color: rgb(255, 255, 255);
+            color: #ffffff;
+            -webkit-transform: translateY(-2px);
             transform: translateY(-2px);
         }
 
         .service-card p {
-            color: rgb(232, 244, 253);
+            color: #e8f4fd;
             line-height: 1.7;
+            -webkit-transition: all 0.3s ease;
             transition: all 0.3s ease;
             flex-grow: 1;
             margin-bottom: 1.5rem;
         }
 
         .service-card:hover p {
-            color: rgb(255, 255, 255);
+            color: #ffffff;
         }
 
         .service-visual {
@@ -388,11 +474,13 @@
             object-fit: cover;
             border-radius: 8px;
             opacity: 0.8;
+            -webkit-transition: all 0.3s ease;
             transition: all 0.3s ease;
         }
 
         .service-card:hover .service-visual img {
-            opacity: 1 !important;
+            opacity: 1;
+            -webkit-transform: scale(1.05);
             transform: scale(1.05);
         }
 
@@ -405,13 +493,13 @@
         }
 
         .case-card {
-            background: rgba(255, 255, 255, 0.05);
-            background: rgba(255, 255, 255, 0.08);
+            background-color: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(110, 70, 140, 0.2);
             border-radius: 12px;
             padding: 2.5rem;
-            backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            -webkit-transition: all 0.3s ease;
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
@@ -419,14 +507,15 @@
         }
 
         .case-card:hover {
+            -webkit-transform: translateY(-8px);
             transform: translateY(-8px);
             border-color: rgba(110, 70, 140, 0.4);
             box-shadow: 0 15px 40px rgba(15, 20, 25, 0.4);
         }
 
         .case-tag {
-            background: rgb(56, 161, 105);
-            color: rgb(255, 255, 255);
+            background-color: #38a169;
+            color: #ffffff;
             padding: 0.25rem 0.75rem;
             border-radius: 20px;
             font-size: 0.75rem;
@@ -441,12 +530,12 @@
         .case-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: rgb(255, 255, 255);
+            color: #ffffff;
             font-weight: 600;
         }
 
         .case-card p {
-            color: rgb(232, 244, 253);
+            color: #e8f4fd;
             margin-bottom: 1.5rem;
             line-height: 1.7;
             flex-grow: 1;
@@ -462,33 +551,35 @@
             object-fit: cover;
             border-radius: 8px;
             opacity: 0.8;
+            -webkit-transition: all 0.3s ease;
             transition: all 0.3s ease;
         }
 
         .case-card:hover .case-visual img {
-            opacity: 1 !important;
+            opacity: 1;
+            -webkit-transform: scale(1.05);
             transform: scale(1.05);
         }
 
         .case-link {
-            color: rgb(255, 255, 255);
+            color: #ffffff;
             text-decoration: none;
             font-weight: 600;
+            -webkit-transition: color 0.3s ease;
             transition: color 0.3s ease;
-            border-bottom: 2px solid rgb(74, 144, 226);
+            border-bottom: 2px solid #4a90e2;
             padding-bottom: 2px;
             margin-top: auto;
             align-self: flex-start;
         }
 
         .case-link:hover {
-            color: rgb(74, 144, 226);
+            color: #4a90e2;
         }
 
         /* About Section */
         .about {
-            background: rgb(15, 20, 25);
-            background: rgba(15, 20, 25, 0.4);
+            background-color: rgba(15, 20, 25, 0.4);
             border-top: 1px solid rgba(74, 144, 226, 0.15);
             border-bottom: 1px solid rgba(74, 144, 226, 0.15);
         }
@@ -496,7 +587,7 @@
         .team-intro {
             text-align: center;
             font-size: 1.125rem;
-            color: rgb(232, 244, 253);
+            color: #e8f4fd;
             margin-bottom: 4rem;
             max-width: 800px;
             margin-left: auto;
@@ -513,13 +604,13 @@
 
         .team-member {
             text-align: center;
-            background: rgba(255, 255, 255, 0.05);
-            background: rgba(255, 255, 255, 0.08);
+            background-color: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(74, 144, 226, 0.2);
             border-radius: 12px;
             padding: 3rem 2rem;
-            backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            -webkit-transition: all 0.3s ease;
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
@@ -527,6 +618,7 @@
         }
 
         .team-member:hover {
+            -webkit-transform: translateY(-8px);
             transform: translateY(-8px);
             box-shadow: 0 15px 40px rgba(15, 20, 25, 0.4);
         }
@@ -536,24 +628,26 @@
             height: 120px;
             border-radius: 50%;
             margin: 0 auto 1.5rem;
-            border: 3px solid rgb(74, 144, 226);
+            border: 3px solid #4a90e2;
+            -webkit-transition: all 0.3s ease;
             transition: all 0.3s ease;
         }
 
         .team-member:hover img {
+            -webkit-transform: scale(1.05);
             transform: scale(1.05);
-            border-color: rgb(128, 90, 213);
+            border-color: #805ad5;
         }
 
         .team-member h3 {
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
-            color: rgb(255, 255, 255);
+            color: #ffffff;
             font-weight: 600;
         }
 
         .team-member .role {
-            color: rgb(74, 144, 226);
+            color: #4a90e2;
             font-weight: 600;
             margin-bottom: 1rem;
             font-size: 0.95rem;
@@ -562,25 +656,26 @@
         }
 
         .team-member .description {
-            color: rgb(232, 244, 253);
+            color: #e8f4fd;
             margin-bottom: 1.5rem;
             line-height: 1.7;
             flex-grow: 1;
         }
 
         .linkedin-link {
-            color: rgb(255, 255, 255);
+            color: #ffffff;
             text-decoration: none;
             font-weight: 600;
+            -webkit-transition: color 0.3s ease;
             transition: color 0.3s ease;
-            border-bottom: 2px solid rgb(74, 144, 226);
+            border-bottom: 2px solid #4a90e2;
             padding-bottom: 2px;
             margin-top: auto;
             align-self: center;
         }
 
         .linkedin-link:hover {
-            color: rgb(74, 144, 226);
+            color: #4a90e2;
         }
 
         /* Contact Section */
@@ -592,19 +687,18 @@
         }
 
         .contact-form {
-            background: rgba(255, 255, 255, 0.05);
-            background: rgba(255, 255, 255, 0.08);
+            background-color: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(74, 144, 226, 0.2);
             border-radius: 12px;
             padding: 3rem;
-            backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
         }
 
         .contact-form h3 {
             font-size: 1.75rem;
             margin-bottom: 2rem;
-            color: rgb(255, 255, 255);
+            color: #ffffff;
             font-weight: 600;
         }
 
@@ -615,7 +709,7 @@
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            color: rgb(255, 255, 255);
+            color: #ffffff;
             font-weight: 500;
             font-size: 0.95rem;
         }
@@ -626,39 +720,44 @@
             padding: 1rem;
             border: 1px solid rgba(74, 144, 226, 0.3);
             border-radius: 6px;
-            background: rgb(15, 20, 25);
-            background: rgba(15, 20, 25, 0.6);
-            color: rgb(255, 255, 255);
+            background-color: rgba(15, 20, 25, 0.6);
+            color: #ffffff;
             font-size: 1rem;
+            -webkit-transition: border-color 0.3s ease;
             transition: border-color 0.3s ease;
+            -webkit-appearance: none;
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: rgb(74, 144, 226);
+            border-color: #4a90e2;
             box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15);
+        }
+
+        .form-group input::-webkit-input-placeholder,
+        .form-group textarea::-webkit-input-placeholder {
+            color: rgba(74, 144, 226, 0.7);
         }
 
         .form-group input::placeholder,
         .form-group textarea::placeholder {
-            color: rgb(74, 144, 226);
+            color: rgba(74, 144, 226, 0.7);
         }
 
         .contact-info {
-            background: rgba(255, 255, 255, 0.05);
-            background: rgba(255, 255, 255, 0.08);
+            background-color: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(74, 144, 226, 0.2);
             border-radius: 12px;
             padding: 3rem;
-            backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
         }
 
         .contact-info h3 {
             font-size: 1.75rem;
             margin-bottom: 2rem;
-            color: rgb(255, 255, 255);
+            color: #ffffff;
             font-weight: 600;
         }
 
@@ -667,7 +766,7 @@
         }
 
         .contact-item h4 {
-            color: rgb(255, 255, 255);
+            color: #ffffff;
             margin-bottom: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
@@ -676,7 +775,7 @@
         }
 
         .contact-item p {
-            color: rgb(232, 244, 253);
+            color: #e8f4fd;
             line-height: 1.7;
         }
 
@@ -687,22 +786,22 @@
         }
 
         .social-links a {
-            color: rgb(255, 255, 255);
+            color: #ffffff;
             text-decoration: none;
             font-weight: 600;
+            -webkit-transition: color 0.3s ease;
             transition: color 0.3s ease;
-            border-bottom: 2px solid rgb(74, 144, 226);
+            border-bottom: 2px solid #4a90e2;
             padding-bottom: 2px;
         }
 
         .social-links a:hover {
-            color: rgb(74, 144, 226);
+            color: #4a90e2;
         }
 
         /* Footer */
         footer {
-            background: rgb(15, 20, 25);
-            background: rgba(15, 20, 25, 0.8);
+            background-color: rgba(15, 20, 25, 0.8);
             padding: 3rem 0;
             text-align: center;
             border-top: 1px solid rgba(74, 144, 226, 0.15);
@@ -710,11 +809,19 @@
         }
 
         footer p {
-            color: rgb(74, 144, 226);
+            color: #4a90e2;
             font-size: 0.9rem;
         }
 
         /* Animations */
+        @-webkit-keyframes fadeInUp {
+            to {
+                opacity: 1;
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+            }
+        }
+
         @keyframes fadeInUp {
             to {
                 opacity: 1;
@@ -722,21 +829,38 @@
             }
         }
 
-        /* Mobile-specific fallbacks for backdrop-filter */
-        @supports not (backdrop-filter: blur(10px)) {
-            header {
-                background: rgb(15, 20, 25);
-                background: rgba(15, 20, 25, 0.98);
-            }
-            
+        /* iOS-specific optimizations */
+        @supports (-webkit-touch-callout: none) {
+            /* Simpler backgrounds for iOS */
             .service-card,
             .case-card,
             .team-member,
             .contact-form,
             .contact-info {
-                background: rgba(255, 255, 255, 0.12);
-                background: rgba(255, 255, 255, 0.15);
+                background-color: rgba(255, 255, 255, 0.12);
+                -webkit-backdrop-filter: none;
+                backdrop-filter: none;
             }
+            
+            /* Disable hover effects on touch devices */
+            @media (hover: none) {
+                .service-card:hover,
+                .case-card:hover,
+                .team-member:hover {
+                    -webkit-transform: none;
+                    transform: none;
+                }
+                
+                .service-card:hover .service-icon {
+                    -webkit-transform: scale(1.05);
+                    transform: scale(1.05);
+                }
+            }
+        }
+
+        /* Hidden honeypot field */
+        .hidden {
+            display: none !important;
         }
 
         /* Responsive Design */
@@ -765,17 +889,6 @@
             .contact-form,
             .contact-info {
                 padding: 2rem;
-            }
-            
-            /* Enhanced mobile fallbacks */
-            .service-card:hover,
-            .case-card:hover,
-            .team-member:hover {
-                transform: none;
-            }
-            
-            .service-card:hover .service-icon {
-                transform: scale(1.05);
             }
         }
     </style>
